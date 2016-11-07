@@ -23,7 +23,7 @@ Start server:
 
 	# start multiple module/services
 	# config loaded module in package.json `-m sample,sample2`
-	npm run start-single
+	npm run start-multiple
 
 API docs:
 
