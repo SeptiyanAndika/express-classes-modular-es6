@@ -18,11 +18,11 @@ Start server:
 	npm run start
 
 	# start single module/services
-	# config module load in package.jso `-m sample`
+	# config loaded module in package.json `-m sample`
 	npm run start-single
 
 	# start multiple module/services
-	# config module load in package.jso `-m sample,sample2`
+	# config loaded module in package.json `-m sample,sample2`
 	npm run start-single
 
 API docs:
