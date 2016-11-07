@@ -5,14 +5,26 @@ import swaggerUi from '../swagger-ui';
 import swaggerJSDoc from 'swagger-jsdoc';
 
 
-module.exports = (app) => {
+module.exports = (app,modules_load) => {
+  if(!modules_load){
+    modules_load = [];
+  }
+
   const modules_path = path.join(__dirname, '..','modules');
 
   let apis =[];
   fs
   .readdirSync(modules_path)
   .filter((folder) => {
-    return fs.lstatSync(path.join(modules_path,folder)).isDirectory();
+      if(modules_load.length==0){
+        return fs.lstatSync(path.join(modules_path,folder)).isDirectory();
+      }else{
+         if(modules_load.indexOf(folder)>-1){
+          return fs.lstatSync(path.join(modules_path,folder)).isDirectory();
+         }else{
+          return false;
+         }
+      }
   })
   .forEach((folder) => {
      const module =   new modules(app,folder);

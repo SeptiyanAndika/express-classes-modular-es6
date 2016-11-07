@@ -9,6 +9,16 @@ import kue from 'kue'
 import {app as config_app} from './config/config.js'
 import _ from 'underscore';
 import RelationsModelsHelper from './helpers/RelationsModelsHelper'
+import program from 'commander'
+
+
+function list(val) {
+  return val.split(',');
+}
+
+program
+  .option('-m, --modules [value]', 'An optional value', list)
+  .parse(process.argv);
 
 
 // Create our Express application
@@ -39,8 +49,8 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-	if(!req.pipa){
-    	req.pipa  = {};
+	if(!req.locals){
+    	req.locals  = {};
    	}
 
     next();
@@ -49,7 +59,7 @@ app.use(function (req, res, next) {
 
 let relationsModels = new RelationsModelsHelper()
 
-let core  = require('./core')(app);
+let core  = require('./core')(app,program.modules);
 // new adapters(app,'sample');
 
 
@@ -83,6 +93,7 @@ let core  = require('./core')(app);
 // resource(app)
 // http://stackoverflow.com/a/33799029
 //app.get('/',user.index.bind(user))
+
 
 app.listen(config_app.port, () => {
     console.log('Express listening on port '+port);
