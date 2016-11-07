@@ -60,39 +60,6 @@ app.use(function (req, res, next) {
 let relationsModels = new RelationsModelsHelper()
 
 let core  = require('./core')(app,program.modules);
-// new adapters(app,'sample');
-
-
-// inject models
-// app.models = models
-// app.utils = require('./utils').default;
-
-// var sample = new app.utils.sample(app);
-
-// console.log(sample.toJSON({}));
-
-//require('./modules/sample')(app);
-
-// app.controllers = require('./controllers')(app);
-
-// import resource from './routes/resource'
-// resource(app)
-
-// Start the server
-
-//http://stackoverflow.com/a/35443130
-
-// import UserControllerFactory from './controllers/user'
-
-// let UserController = UserControllerFactory(app);
-
-// app.controllers = [];
-// app.controllers.user =  new UserController();
-
-// import resource from './routes/resource'
-// resource(app)
-// http://stackoverflow.com/a/33799029
-//app.get('/',user.index.bind(user))
 
 
 app.listen(config_app.port, () => {
