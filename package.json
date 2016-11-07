@@ -1,0 +1,39 @@
+{
+  "name": "wallex-es6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js --exec ./node_modules/.bin/babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015-node6": "^0.3.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "agenda": "^0.9.0",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "helmet": "^3.0.0",
+    "kue": "^0.11.4",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.0",
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.6",
+    "swagger-jsdoc": "^1.8.1",
+    "underscore": "^1.8.3"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node6"
+    ]
+  }
+}
