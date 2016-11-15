@@ -14,16 +14,15 @@ Install dependencies:
 Start server:
 	
 	# start all module/services
-	npm start
-	npm run start
+	node server.js
 
 	# start single module/services
 	# config loaded module in package.json `-m sample`
-	npm run start-single
+	node server.js -m user
 
 	# start multiple module/services
 	# config loaded module in package.json `-m sample,sample2`
-	npm run start-multiple
+	node server.js -m user,sample2`
 
 API docs:
 

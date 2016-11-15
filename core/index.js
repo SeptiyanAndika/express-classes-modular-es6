@@ -4,7 +4,6 @@ import modules from './modules';
 import swaggerUi from '../swagger-ui';
 import swaggerJSDoc from 'swagger-jsdoc';
 
-
 module.exports = (app,modules_load) => {
   if(!modules_load){
     modules_load = [];

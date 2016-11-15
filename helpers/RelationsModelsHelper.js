@@ -1,11 +1,11 @@
-import model from '../modules/sample/models/sample';
-import model1 from '../modules/sample/models/sample1';
+//import user from '../modules/sample/models/user';
+//import model1 from '../modules/sample/models/sample1';
 
 
 class RelationsModelsHelper  {
 
 	constructor() {
-		model.belongsTo(model1);
+//		model.belongsTo(model1);
 
 	}	
 }

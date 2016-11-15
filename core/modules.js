@@ -69,6 +69,7 @@ class Modules {
           let middlewares = route.middlewares;
 
           name_arr = name.split(' ');
+          
           if (name_arr.length > 1) {
             route_name = name_arr[1];
             route_verb = name_arr[0];
@@ -78,17 +79,22 @@ class Modules {
           }
 
           controller = _controllers[route.controller];
-          
-          let middleware_route = [];
-          
-           _.each(middlewares,(name) => {
-                let middleware = name.split('.');
-                middleware_route.push((_middlewares[middleware[0]][middleware[1]]));
-           });
+          if(controller && controller[route.action]){
+              let middleware_route = [];
+            
+             _.each(middlewares,(name) => {
+                  let middleware = name.split('.');
+                  if(_middlewares[middleware[0]][middleware[1]]){
+                    middleware_route.push((_middlewares[middleware[0]][middleware[1]]));
+                  }
+             });
 
-          middleware_route.push(controller[route.action].bind(controller));
+            middleware_route.push(controller[route.action].bind(controller));
 
-          this.app[route_verb](route_name, middleware_route);
+            this.app[route_verb](route_name, middleware_route);
+          }else{
+             console.log('\x1b[31m%s\x1b[0m',' routing not found for controller '+route.controller+' and action '+ route.action);
+          }
 
       });
   }

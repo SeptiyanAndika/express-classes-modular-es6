@@ -1,4 +1,4 @@
-var connection = require('./connection');
+var connection = require('../../../core/db/connection');
 
 let sample1Schema = {
   author: {
