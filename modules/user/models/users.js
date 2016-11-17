@@ -22,11 +22,11 @@ let authenticate = function(username,password,callback) {
 		  		if(res){
 		  			callback(null,user);
 		  		}else{
-		  			callback(err,null);
+		  			callback({message:'check username and password'},null);
 		  		}
    			});
 	  	}else{
-	  		callback({message:'user not found'},null);
+	  		callback({message:'check username and password'},null);
 	  	}
 	}).catch(function (err) {
 		callback(err,null);
