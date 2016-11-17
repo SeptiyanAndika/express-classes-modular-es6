@@ -8,13 +8,12 @@ class Modules {
     this.app = app;
     this.module_path = module_path;
     this.controllers_file = [];
-    const routes_path = path.join(__dirname,'..','modules' , this.module_path,'routes.js');
-    const self = this;    
+    const routes_path = path.join(__dirname,'..','modules' , this.module_path,'routes.js');    
       if(fs.existsSync(routes_path)){
-         self.routes = require(routes_path);
-         const controllers = self.loadModule('controllers')
-         const middlewares = self.loadModule('middlewares')
-         self.createRouting(controllers,middlewares)
+         this.routes = require(routes_path);
+         const controllers = this.loadModule('controllers')
+         const middlewares = this.loadModule('middlewares')
+         this.createRouting(controllers,middlewares)
       }else{
         // https://coderwall.com/p/yphywg/printing-colorful-text-in-terminal-when-run-node-js-script
         console.log('\x1b[31m%s\x1b[0m', 'routes.js for modules '+module_path+' not found');
@@ -26,7 +25,7 @@ class Modules {
     const module_path = path.join(__dirname,'..','modules' , this.module_path,folder);
   
     if(fs.existsSync(module_path)){
-        let controllers =[];
+        let actions =[];
           fs
           .readdirSync(module_path)
           .filter((file) => {
@@ -43,15 +42,20 @@ class Modules {
             }
 
             let filename = require(file_path);
-            controllers[this.removeExtension(file_name)] = new filename()
+            actions[this.removeExtension(file_name)] = new filename()
 
           });
-          return controllers;
+          return actions;
 
     }else{
       // https://coderwall.com/p/yphywg/printing-colorful-text-in-terminal-when-run-node-js-script
-      console.log('\x1b[31m%s\x1b[0m', folder +' not found for modules '+self.module_path);
-        return null;
+      console.log('\x1b[31m%s\x1b[0m', folder +' not found for modules '+this.module_path);
+      if(folder === "middlewares"){
+            return [];
+      }else{
+         return null;
+      }
+
     }
     
   }
